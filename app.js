@@ -151,8 +151,8 @@ function handleOption(optId, nome) {
   adicionarMensagem('usuario', frases[optId]);
   appendBotTyping(() => {
     switch(optId) {
-      case 'optLoja': adicionarMensagem('bot','Nossa loja lançou produtos novos! 🎉 Use FUTURE10.'); appendBotImage('imgs/furia-thumb.png'); setTimeout(()=>showMainMenu(nome),500); break;
-      case 'optTimes': adicionarMensagem('bot','Times de CS:GO, LoL e mais no lobby.gg/twitch.tv/furia.'); appendBotImage('imgs/logo-furia.svg'); setTimeout(()=>showMainMenu(nome),500); break;
+      case 'optLoja': adicionarMensagem('bot','Nossa <a href="https://www.furia.gg/produtos/collabs/adidas" target="_blank" rel="noopener noreferrer">loja</a> lançou produtos novos! 🎉 Use FUTURE10.'); appendBotImage('imgs/furia-thumb.png'); setTimeout(()=>showMainMenu(nome),500); break;
+      case 'optTimes': adicionarMensagem('bot','A FURIA possui presença em diversos jogos do cenário do E-Sports, acompanhe nossos criadores de conteúdos na <a href="twitch.tv/furia" target="_blank" rel="noopener noreferrer">Twitch</a>/ e fique por dentro das novidades.'); appendBotImage('imgs/logo-furia.svg'); setTimeout(()=>showMainMenu(nome),500); break;
       case 'optRedes': adicionarMensagem('bot','Siga-nos: @FURIA nas redes sociais.'); appendBotImage('imgs/furia-logo.png'); setTimeout(()=>showMainMenu(nome),500); break;
       case 'optAjuda':
  
@@ -174,7 +174,7 @@ function showHelpSubmenu() {
    
         document.getElementById('chat').innerHTML=''; clearActions();
         const pos = Math.floor(Math.random()*10) + 1;
-        adicionarMensagem('bot', `Você entrou na fila! Sua posição atual é ${pos}.`);
+        adicionarMensagem('bot', `Você entrou na fila! Sua posição atual é ${pos}. Caso deseje, também pode nos contatar no <a href="https://wa.me/5511993404466" target="_blank" rel="noopener noreferrer">whatssap</a>`);
     
         const exitBtn = document.createElement('button');
         exitBtn.textContent = 'Sair';
