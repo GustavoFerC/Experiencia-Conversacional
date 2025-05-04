@@ -1,0 +1,204 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: #fff;
+    background-color: aliceblue;
+  }
+  
+
+
+  .navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+    color: #000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    z-index: 10;
+  }
+  
+  .nav-links ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    font-size: 14px;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+  }
+  
+  .logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50%;
+        height: 50%;
+        background-image: url('/imgs/logo-furia.svg'); 
+        background-repeat: no-repeat;
+        background-position: center;  
+  }
+  
+  .icons span {
+    margin-left: 20px;
+    font-size: 16px;
+  }
+
+
+
+/*body*/
+
+.main-wrapper {
+    padding: 5%;
+    max-width: 73%;
+    margin: 0 auto;
+  }
+  
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .main-title {
+    font-size: 2.1vw;
+    font-weight: 800;
+    margin-bottom: 2%;
+    line-height: 1.;
+    color: #000000;
+  }
+  
+  .content-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+  
+  .video-box {
+    width: 200%;
+    max-height: 70%;
+    height: auto;
+    aspect-ratio: 16/9;
+  }
+  
+
+  #furiaVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+
+  .furia-section {
+    padding: 60px 5%;
+    background-color: #eaf4ff;
+    text-align: center;
+  }
+
+  .furia-heading {
+    font-size: 48px;
+    font-weight: 900;
+    margin-bottom: 40px;
+    color: #000;
+  }
+
+
+
+  .furia-bio {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #000;
+    background-color: #f3f7ff;
+    padding: 30px;
+    border-radius: 16px;
+    max-width: 700px;
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    text-align: justify;
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  .furia-bio strong {
+    color: #000000;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  
+
+  .furia-bio-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .bio-side-img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+
+  .bio-side-img:hover {
+    transform: scale(1.05);
+  }
+
+  .live-button {
+    display: inline-block;
+    background-color: #000;
+    color: #ff0000;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: bold;
+    text-align: center;
+    width: fit-content;
+  }
+  
+  .live-button:hover {
+    background-color: #333;
+  }
+  
+  #chat-float-button {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background-color: #00000086;
+    color: white;
+    font-size: 24px;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    z-index: 1000;
+  }
+  
+  .chat-float-button img {
+    width: 80px;
+    height: 80px;
+  }
+  
+
+
+
+
+
