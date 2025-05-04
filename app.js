@@ -1,16 +1,11 @@
-// Controles do vídeo
 const video = document.getElementById("furiaVideo");
 setInterval(() => { if (video.paused) video.play(); }, 200);
 video.addEventListener("click", () => video.muted = !video.muted);
 
-// Controla qual menu exibir
 let firstMenu = true;
-// Armazena protocolo para uso na tela de e-mail
 let currentProtocolo = '';
-// Estado de formatação de e-mail
 let inEmailForm = false;
 
-// Ao carregar o DOM
 document.addEventListener('DOMContentLoaded', () => {
   const chatBtn    = document.getElementById("chat-float-button");
   const chatWindow = document.getElementById("chat-window");
@@ -27,12 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const confEmail  = document.getElementById("confEmail");
   const msgInit    = document.getElementById("mensagemInicial");
 
-  // Abrir/fechar chat
   chatBtn.addEventListener("click", () => {
     const open = chatWindow.classList.toggle("show");
     chatIcon.src = open ? "imgs/icon-fechar.svg" : "imgs/furia-logo.png";
     if (!open) {
-      // Limpa tudo ao fechar
       clearNotification();
       document.getElementById('nome').value = '';
       document.getElementById('email').value = '';
@@ -46,7 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Avançar na identificação
   btnAvanc.addEventListener("click", () => {
     clearNotification();
     const nome  = document.getElementById("nome").value.trim();
@@ -59,7 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
     viewConf.classList.remove("hidden");
   });
 
-  // Confirmar dados
   btnConf.addEventListener("click", () => {
     clearNotification();
     const nome      = confNome.innerText;
@@ -76,14 +67,12 @@ document.addEventListener('DOMContentLoaded', () => {
     showMainMenu(nome);
   });
 
-  // Voltar para editar
   btnEdit.addEventListener("click", () => {
     clearNotification();
     viewConf.classList.add("hidden");
     viewPre.classList.remove("hidden");
   });
 
-  // Envio padrão ou form email
   btnSend.addEventListener('click', () => {
     if (inEmailForm) sendEmailForm();
     else sendStandard();
@@ -114,7 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// Gera protocolo de 9 dígitos
 function gerarProtocolo(email) {
   const ts  = Date.now().toString().slice(-6);
   const sum = [...email].reduce((s, c) => s + c.charCodeAt(0), 0);
@@ -122,7 +110,6 @@ function gerarProtocolo(email) {
   return (sum + ts + rnd).slice(-9);
 }
 
-// Notificações pré-chat
 function showNotification(msg) {
   clearNotification();
   const notif = document.createElement('div'); notif.className = 'chat-notification'; notif.innerText = msg;
@@ -136,7 +123,7 @@ function clearNotification() {
 // INTERAÇÃO DO CHAT
 // ====================
 
-// Exibe menu principal
+
 function showMainMenu(nome) {
   clearActions(); inEmailForm = false;
   const msg = firstMenu ? `Olá, ${nome}, seja bem-vindo ao nosso atendimento!` : 'Posso te ajudar em mais algo?';
@@ -155,10 +142,10 @@ function showMainMenu(nome) {
   });
 }
 
-// Limpa botões
+
 function clearActions() { document.getElementById('action-buttons').innerHTML = ''; }
 
-// Trata a escolha do usuário
+
 function handleOption(optId, nome) {
   const frases = { optLoja:'Quero saber sobre a loja.', optTimes:'Quero saber mais sobre os times.', optRedes:'Quero ver as redes sociais.', optAjuda:'Preciso de ajuda.' };
   adicionarMensagem('usuario', frases[optId]);
@@ -168,31 +155,31 @@ function handleOption(optId, nome) {
       case 'optTimes': adicionarMensagem('bot','Times de CS:GO, LoL e mais no lobby.gg/twitch.tv/furia.'); appendBotImage('imgs/logo-furia.svg'); setTimeout(()=>showMainMenu(nome),500); break;
       case 'optRedes': adicionarMensagem('bot','Siga-nos: @FURIA nas redes sociais.'); appendBotImage('imgs/furia-logo.png'); setTimeout(()=>showMainMenu(nome),500); break;
       case 'optAjuda':
-        // Mostrar submenu de Ajuda
+ 
         document.getElementById('chat').innerHTML=''; clearActions(); showHelpSubmenu(); break;
     }
   });
 }
 
-// Submenu Ajuda
+
 function showHelpSubmenu() {
   const grid = document.getElementById('action-buttons');
   [['Enviar e-mail','subEmail'],['Falar com atendente','subAtendente']].forEach(([label,id])=>{
     const btn=document.createElement('button'); btn.textContent=label;
     btn.addEventListener('click',()=>{
       if(id==='subEmail'){
-        // limpar chat e abrir form
+       
         document.getElementById('chat').innerHTML=''; clearActions(); showEmailForm();
       } else {
-        // entrar na fila
+   
         document.getElementById('chat').innerHTML=''; clearActions();
         const pos = Math.floor(Math.random()*10) + 1;
         adicionarMensagem('bot', `Você entrou na fila! Sua posição atual é ${pos}.`);
-        // cria botão Sair
+    
         const exitBtn = document.createElement('button');
         exitBtn.textContent = 'Sair';
         exitBtn.addEventListener('click', () => {
-          // volta ao menu de atendimento
+   
           document.getElementById('chat').innerHTML = '';
           clearActions();
           firstMenu = false;
@@ -204,8 +191,6 @@ function showHelpSubmenu() {
   });
 } grid.appendChild(btn);
 
-// Monta a interface de e-mail (texto apenas)
-// Monta a interface de e-mail (texto apenas)
 function showEmailForm() {
   inEmailForm = true;
   const chat = document.getElementById('chat');
@@ -219,7 +204,6 @@ function showEmailForm() {
   `;
   chat.scrollTop = chat.scrollHeight;
 
-  // Remove botões antigos e adiciona apenas 'Sair'
   clearActions();
   const grid = document.getElementById('action-buttons');
   const exitBtn = document.createElement('button');
@@ -234,11 +218,7 @@ function showEmailForm() {
   grid.appendChild(exitBtn);
 }
 
-// Adiciona mensagem e força scroll
 function adicionarMensagem(remetente,texto){const chat=document.getElementById('chat');const div=document.createElement('div');div.className=`chat-message ${remetente}`;div.textContent=remetente==='usuario'?`Você: ${texto}`:texto;chat.appendChild(div);chat.scrollTop=chat.scrollHeight;}
-// Insere imagem
 function appendBotImage(src){const chat=document.getElementById('chat');const img=document.createElement('img');img.src=src;img.className='chat-image';chat.appendChild(img);chat.scrollTop=chat.scrollHeight;}
-// Simula "digitando"
 function appendBotTyping(cb){const chat=document.getElementById('chat');const div=document.createElement('div');div.className='chat-message bot typing';div.textContent='FURIA está digitando...';chat.appendChild(div);chat.scrollTop=chat.scrollHeight;setTimeout(()=>{div.remove();cb();},1000);}
-// Apenas rolagem no container
 const chatWindow=document.getElementById('chat-window');chatWindow.addEventListener('wheel',e=>{if(chatWindow.matches(':hover')){e.preventDefault();chatWindow.scrollTop+=e.deltaY;}},{passive:false});

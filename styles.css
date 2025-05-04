@@ -185,7 +185,7 @@
     background-color: #333;
   }
   
-  /* Confirmação */
+
   #view-confirm p {
     margin-bottom: 12px;
     font-size: 14px;
@@ -220,14 +220,14 @@
 #chat {
     display: flex;
     flex-direction: column;
-    gap: 8px;      /* espaçamento entre as mensagens */
-    padding: 8px;  /* opcional */
+    gap: 8px;     
+    padding: 8px; 
   }
 
   #chat .chat-message.bot {
-    align-self: flex-start;       /* alinha à esquerda */
-    background-color: #f0f0f0;    /* cor de fundo clara */
-    color: #000;                  /* texto preto */
+    align-self: flex-start;       
+    background-color: #f0f0f0;   
+    color: #000;                 
     padding: 10px 14px;
     border-radius: 12px;
     max-width: 80%;
@@ -236,9 +236,9 @@
 
   /* Bolha do usuário */
   #chat .chat-message.usuario {
-    align-self: flex-end;         /* alinha à direita */
-    background-color: #20aed150;       /* cor de fundo escura */
-    color: #ffffff;                  /* texto branco */
+    align-self: flex-end;         
+    background-color: #20aed150;       
+    color: #ffffff;                
     padding: 10px 14px;
     border-radius: 12px;
     max-width: 80%;
@@ -269,8 +269,6 @@
     width: 100%;
     height: 100%;
   }
-
-
   
   /* Janela do Chat */
   #chat-window {
@@ -305,7 +303,6 @@
     opacity: 1;
   }
   
-  /* Cabeçalho */
   .chat-header {
     position: sticky;
     top: 0;
@@ -317,10 +314,6 @@
     text-align: center;
   }
   
-
-  
-
-  /* Views internas */
   #chat-window .view {
     flex: 1;
     padding: 16px;
@@ -333,7 +326,6 @@
     display: none;
   }
 
-/* Chat propriamente dito */
 #view-chat .chat-body {
     flex: 1;
     overflow-y: auto;
@@ -414,7 +406,6 @@
     background-color: #333;
   }
   
-  /* foto/imagem de resposta */
   .chat-image {
     width: 100%;
     margin: 8px 0;
@@ -442,15 +433,9 @@
     text-align: center;
   }
 
-  /* Garante que todas as bolhas de mensagem fiquem com texto preto */
 .chat-message {
     color: #000 !important;
   }
-  
-
-
-
-
 
   @media (max-width: 768px) {
     .nav-links ul {
