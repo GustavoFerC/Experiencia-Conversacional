@@ -3,8 +3,6 @@
     padding: 0;
     box-sizing: border-box;
   }
-  
-
 
   body {
     font-family: 'Inter', sans-serif;
@@ -12,8 +10,6 @@
     background-color: aliceblue;
   }
   
-
-
   .navbar {
     position: fixed;
     top: 0;
@@ -45,8 +41,8 @@
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
-        width: 50%;
-        height: 50%;
+        width: 120px;
+        height: 40px;
         background-image: url('/imgs/logo-furia.svg'); 
         background-repeat: no-repeat;
         background-position: center;  
@@ -56,8 +52,6 @@
     margin-left: 20px;
     font-size: 16px;
   }
-
-
 
 /*body*/
 
@@ -88,8 +82,8 @@
   }
   
   .video-box {
-    width: 200%;
-    max-height: 70%;
+    width: 100%;
+    max-height: 100%;
     height: auto;
     aspect-ratio: 16/9;
   }
@@ -115,8 +109,6 @@
     color: #000;
   }
 
-
-
   .furia-bio {
     font-size: 18px;
     line-height: 1.8;
@@ -138,7 +130,6 @@
     text-transform: uppercase;
   }
   
-
   .furia-bio-container {
     display: flex;
     justify-content: center;
@@ -160,41 +151,300 @@
     transform: scale(1.05);
   }
 
-  .live-button {
-    display: inline-block;
-    background-color: #000;
-    color: #ff0000;
-    padding: 12px 24px;
-    text-decoration: none;
-    border-radius: 12px;
-    font-weight: bold;
+
+/* Pré-chat Inputs */
+#view-prechat h4 {
     text-align: center;
-    width: fit-content;
+    margin-bottom: 16px;
+    font-size: 20px;
+    color: #000;
   }
-  
-  .live-button:hover {
+  #view-prechat input {
+    width: 100%;
+    padding: 10px 14px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #000;
+  }
+  #view-prechat input::placeholder {
+    color: #888;
+  }
+  #btnAvancar {
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #000;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  #btnAvancar:hover {
     background-color: #333;
   }
   
-  #chat-float-button {
+  /* Confirmação */
+  #view-confirm p {
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: #000;
+  }
+  #view-confirm button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 6px 0;
+    transition: background 0.2s ease;
+  }
+  #btnConfirmar {
+    background-color: #000;
+    color: #fff;
+  }
+  #btnConfirmar:hover {
+    background-color: #333;
+  }
+  #btnEditar {
+    background-color: #ccc;
+    color: #000;
+  }
+  #btnEditar:hover {
+    background-color: #aaa;
+  }
+
+/* Chat Flutuante */
+
+#chat {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;      /* espaçamento entre as mensagens */
+    padding: 8px;  /* opcional */
+  }
+
+  #chat .chat-message.bot {
+    align-self: flex-start;       /* alinha à esquerda */
+    background-color: #f0f0f0;    /* cor de fundo clara */
+    color: #000;                  /* texto preto */
+    padding: 10px 14px;
+    border-radius: 12px;
+    max-width: 80%;
+    box-shadow: 0 2px 4px rgba(10, 14, 29, 0.1);
+  }
+
+  /* Bolha do usuário */
+  #chat .chat-message.usuario {
+    align-self: flex-end;         /* alinha à direita */
+    background-color: #20aed150;       /* cor de fundo escura */
+    color: #ffffff;                  /* texto branco */
+    padding: 10px 14px;
+    border-radius: 12px;
+    max-width: 80%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+#chat-float-button {
     position: fixed;
     bottom: 24px;
     right: 24px;
-    background-color: #00000086;
-    color: white;
-    font-size: 24px;
-    border: none;
-    border-radius: 50%;
     width: 60px;
     height: 60px;
+    background-color: #000000a2;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    transition: transform 0.2s ease;
     z-index: 1000;
   }
+  #chat-float-button:hover {
+    transform: scale(1.1);
+  }
+  #chat-float-button img {
+    width: 100%;
+    height: 100%;
+  }
+
+
   
-  .chat-float-button img {
-    width: 80px;
-    height: 80px;
+  /* Janela do Chat */
+  #chat-window {
+    position: fixed;
+    bottom: 100px;
+    right: 24px;
+    width: 320px;
+    height: 70vh;
+    max-height: 85vh;
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 16px 32px rgba(0,0,0,0.2);
+    overflow: auto;
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    z-index: 999;
+  }
+
+  #chat-window::-webkit-scrollbar{
+    width: 6px;
+  }
+  #chat-window::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+
+  #chat-window.show {
+    transform: scale(1);
+    opacity: 1;
+  }
+  
+  /* Cabeçalho */
+  .chat-header {
+    position: sticky;
+    top: 0;
+    background: linear-gradient(130deg, #1e1e1e, #000);
+    color: #fff;
+    padding: 16px;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+  }
+  
+
+  
+
+  /* Views internas */
+  #chat-window .view {
+    flex: 1;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    transition: opacity 0.2s ease;
+  }
+  #chat-window .view.hidden {
+    opacity: 0;
+    display: none;
+  }
+
+/* Chat propriamente dito */
+#view-chat .chat-body {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 12px;
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+  }
+  #view-chat .chat-body::-webkit-scrollbar {
+    width: 6px;
+  }
+  #view-chat .chat-body::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 3px;
+  }
+  .chat-message.operador {
+    background-color: #f0f0f0;
+    color: #000;
+    align-self: flex-start;
+    margin-bottom: 10px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    max-width: 80%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  .chat-footer {
+    display: flex;
+    padding: 12px;
+    border-top: 1px solid #eee;
+  }
+  #inputMsg {
+    flex: 1;
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #000;
+    margin-right: 8px;
+  }
+  #btnSend {
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: 50%;
+    background-color: #0e0707;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+  }
+  #btnSend:hover {
+    background-color: #333;
+  }
+  
+
+/* grade 2x2 de botões de opção */
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    padding: 0 16px 16px;
+  }
+  
+  .button-grid button {
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #000;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  
+  .button-grid button:hover {
+    background-color: #333;
+  }
+  
+  /* foto/imagem de resposta */
+  .chat-image {
+    width: 100%;
+    margin: 8px 0;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  
+
+  .mensagem-inicial {
+    background-color: #f3f3f3;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    color: #000000;
+  }
+  
+  .chat-notification {
+    background-color: #ffe5e5;
+    color: #c00;
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  /* Garante que todas as bolhas de mensagem fiquem com texto preto */
+.chat-message {
+    color: #000 !important;
   }
   
 
@@ -202,3 +452,27 @@
 
 
 
+  @media (max-width: 768px) {
+    .nav-links ul {
+      gap: 15px;
+      font-size: 12px;
+    }
+  
+    .main-title {
+      font-size: 5vw;
+    }
+  
+    .furia-heading {
+      font-size: 32px;
+    }
+  
+    .furia-bio-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .bio-side-img {
+      max-width: 90%;
+    }
+  }
+  

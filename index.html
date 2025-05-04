@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
   <header class="navbar">
     <nav class="nav-links">
       <ul>
@@ -28,66 +29,78 @@
     <h1 class="main-title">FAÇA PARTE DO <u>MELHOR</u> TIME DE E-SPORT</h1>
 
     <div class="main-content">
-        <div class="content-grid">
-            <div class="video-box">
-                <video id="furiaVideo" width="100%" height="100%" autoplay muted loop playsinline oncontextmenu="return false;">
-                <source src="imgs/FURIA-VIDEO.mp4" type="video/mp4">
-            </div>
+      <div class="content-grid">
+        <div class="video-box">
+          <video id="furiaVideo" autoplay muted loop playsinline oncontextmenu="return false;">
+            <source src="imgs/FURIA-VIDEO.mp4" type="video/mp4">
+          </video>
         </div>
+      </div>
     </div>
 
     <section class="furia-section">
-        <h1 class="furia-heading">FURIA Esports: A Alma Selvagem do Competitivo</h1>
-      
-        <div class="furia-bio-container">
-          
-          <a href="https://www.furia.gg/produtos/collabs/adidas" target="_blank">
-            <img src="imgs/furia-1.png" alt="Redirecionamento 1" class="bio-side-img" />
-          </a>
-      
-          <p class="furia-bio">
+      <h1 class="furia-heading">FURIA Esports: A Alma Selvagem do Competitivo</h1>
+      <div class="furia-bio-container">
+        <a href="https://www.furia.gg/produtos/collabs/adidas" target="_blank">
+          <img src="imgs/furia-1.png" alt="Redirecionamento 1" class="bio-side-img" />
+        </a>
+        <p class="furia-bio">
             Fundada no Brasil em 2017, a <strong>FURIA</strong> nasceu para desafiar o impossível e dominar o cenário global do e-sports com garra, inteligência e atitude. Em pouco tempo, a organização se tornou símbolo de excelência e ousadia, levando o nome do país às maiores arenas do mundo.<br><br>
             Com presença marcante em títulos como <strong>CS2, VALORANT, LEAGUE OF LEGENDS, ROCKET LEAGUE e APEX LEGENDS</strong>, a FURIA não joga apenas para vencer — ela joga para transformar. Cada jogador representa o espírito indomável de uma nação que respira competição, estratégia e paixão.<br><br>
             Mais do que uma organização, a FURIA é uma legião. Uma tropa em constante evolução, que luta com orgulho, rompe barreiras e inspira novas gerações a desafiar o impossível. <strong>FURIA É O RUGIDO QUE ECOA NO CORAÇÃO DOS VERDADEIROS GUERREIROS DO E-SPORT.</strong>
           </p>
-      
-          <a href="https://www.furia.gg/produtos/collabs/adidas" target="_blank">
-            <img src="imgs/furia-2.png" alt="Redirecionamento 2" class="bio-side-img" />
-          </a>
-      
-        </div>
-      </section>
+        <a href="https://www.furia.gg/produtos/collabs/adidas" target="_blank">
+          <img src="imgs/furia-2.png" alt="Redirecionamento 2" class="bio-side-img" />
+        </a>
+      </div>
+    </section>
 
+    <!-- Chat Flutuante -->
     <div class="chat-float-button">
-      <img id="chat-icon" src="imgs/furia-logo.png" alt="Abrir chat" />
+      <button id="chat-float-button">
+        <img id="chat-icon" src="imgs/furia-logo.png" alt="Abrir chat" />
+      </button>
 
-    <!-- Botão flutuante -->
-    <button id="chat-float-button">
-    </button>
-  
-    <!-- Janela do chatbot -->
-    <div id="chat-window" class="hidden">
+      <div id="chat-window" class="hidden">
         <div class="chat-header">FURIA | ATENDIMENTO</div>
-    
-    <div class="chat-body">
-      <div class="chat-message user">
-        <div class="avatar"></div>
-        <div class="bubble">Olá, como posso te ajudar?</div>
+
+        <!-- 1) Pré-chat: identificação -->
+        <div id="view-prechat" class="view">
+          <h4>Identificação</h4>
+          <input type="text" id="nome" placeholder="Seu nome" />
+          <input type="email" id="email" placeholder="Seu e-mail" />
+          <button id="btnAvancar">Avançar</button>
+        </div>
+
+        <!-- 2) Confirmação -->
+        <div id="view-confirm" class="view hidden">
+          <p><strong>Nome:</strong> <span id="confNome"></span></p>
+          <p><strong>E-mail:</strong> <span id="confEmail"></span></p>
+          <p>Confirma?</p>
+          <button id="btnConfirmar">Sim</button>
+          <button id="btnEditar">Editar</button>
+        </div>
+
+        <!-- 3) Chat -->
+        <div id="view-chat" class="view hidden">
+
+            <div id="mensagemInicial" class="mensagem-inicial"></div>
+
+            <div class="chat-body" id="chat">
+                <!-- as mensagens de texto vão aqui -->
+            </div> 
+              <!-- container para botões de ação -->
+            <div id="action-buttons" class="button-grid"></div>
+              
+            <div class="chat-footer">
+                <input type="text" id="inputMsg" placeholder="Escreva aqui...">
+                <button id="btnSend">➤</button>
+            </div>
+        </div>
       </div>
-      <div class="chat-message bot">
-        <div class="bubble">Quero saber mais sobre os jogos da FURIA!</div>
-      </div>
-      <!-- Adicione mais bolhas conforme necessário -->
     </div>
-  
-    <div class="chat-footer">
-      <input type="text" placeholder="Digite aqui..." />
-      <button>➤</button>
-    </div>
-  </div>
-  
-    </div>
+
   </main>
-  <script src="app.js"></script>
+  <script src="app.js" defer></script>
 </body>
 </html>
